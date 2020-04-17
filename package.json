@@ -1,0 +1,24 @@
+{
+  "name": "easy-monitor",
+  "version": "1.0.0",
+  "description": "Easy way to minitor your server.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/help-14/easy-monitor.git"
+  },
+  "author": "Help-14",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/help-14/easy-monitor/issues"
+  },
+  "homepage": "https://github.com/help-14/easy-monitor#readme",
+  "dependencies": {
+    "current-processes": "^0.2.1",
+    "lodash": "^4.17.15",
+    "node-os-utils": "^1.2.2"
+  }
+}
