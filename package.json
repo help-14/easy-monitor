@@ -1,0 +1,29 @@
+{
+  "name": "easy-monitor-server",
+  "version": "1.0.0",
+  "description": "Easy to use monitor tool for medium and small project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "config": "^3.3.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/help-14/easy-monitor.git"
+  },
+  "author": "Help-14",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/help-14/easy-monitor/issues"
+  },
+  "homepage": "https://github.com/help-14/easy-monitor#readme"
+}
