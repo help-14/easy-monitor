@@ -1,0 +1,15 @@
+{
+    "enabledLog": {
+        "cpu": true,
+        "memory": true,
+        "network": true,
+        "disk": true,
+        "os": true,
+        "process": true,
+        "file": true
+    },
+    "dailyDeviceInfoLog": true,
+    "numberOSTopProcess": 5,
+    "retrySentData": true,
+    "remoteServers": []
+}
