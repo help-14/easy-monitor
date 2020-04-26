@@ -1,13 +1,23 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const db = require('./utils/db');
 
-var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
+const config = require('config');
+const serverName = config.get('name');
+
 var { createNotFoundError, handleError } = require('./routes/error');
+var indexRouter = require('./routes/index');
+var infoRouter = require('./routes/api/info');
+var logRouter = require('./routes/api/log');
 
 var app = express();
+//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+db.init();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,12 +30,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
+
+app.use('/api/info', infoRouter);
+app.use('/api/log', logRouter);
 
 // catch 404 and forward to error handler
 app.use(createNotFoundError);
 app.use(handleError);
 
-//module.exports = app;
-const port = 3000;
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+console.info(`${serverName} is starting...`);
+module.exports = app;

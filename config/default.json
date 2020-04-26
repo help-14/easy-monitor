@@ -1,0 +1,20 @@
+{
+    "name": "Monitor Server",
+    "db": {
+        "database": "name",
+        "host": "localhost",
+        "port": "5432",
+        "user": "user",
+        "password": "pass"
+    },
+    "magicCode": "some random text",
+    "showLastHours": {
+        "cpu": 12,
+        "memory": 12,
+        "network": 2,
+        "disk": 2,
+        "os": 2,
+        "process": 12,
+        "file": 12
+    }
+}
