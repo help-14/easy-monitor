@@ -1,4 +1,5 @@
 {
+    "identifier": "local_pc",
     "enabledLog": {
         "cpu": true,
         "memory": true,
@@ -11,5 +12,10 @@
     "dailyDeviceInfoLog": true,
     "numberOSTopProcess": 5,
     "retrySentData": true,
-    "remoteServers": []
+    "remoteServers": [
+        {
+            "url": "http://localhost:3000/",
+            "magicCode": "86702877-1ed8-4dac-9aac-a91fca49feed"
+        }
+    ]
 }

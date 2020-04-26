@@ -9,8 +9,8 @@ const osCmd = osu.osCmd;
 
 const ps = require('current-processes');
 const _ = require('lodash');
-const config = require('config');
 
+const config = require('config');
 const numberTopProcess = config.get('numberOSTopProcess');
 const enabledLog = config.get('enabledLog');
 
