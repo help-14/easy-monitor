@@ -1,5 +1,6 @@
 {
     "name": "Monitor Server",
+    "domain": "https://abc.com",
     "db": {
         "database": "name",
         "host": "localhost",
