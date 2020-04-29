@@ -1,6 +1,7 @@
 const Router = require('express-promise-router');
 const db = require('../../utils/db');
 const data = require('../../utils/data');
+const { GetIp } = require('../../utils/helper');
 
 const config = require('config');
 const reportColumn = config.get('reportColumn');
@@ -15,6 +16,7 @@ router.get('/', async function (req, res, next) {
     };
 
     let cachedData = await data.GetCacheData();
+    let ip = GetIp();
     for (let server of cachedData) {
         json.tiles.push({
             type: "PING",
@@ -26,7 +28,7 @@ router.get('/', async function (req, res, next) {
             label: `CPU`,
             params: {
                 format: "JSON",
-                url: `http://localhost:3000/api/stats/cpu/${server.id}`,
+                url: `http://${ip}:3000/api/stats/cpu/${server.id}`,
                 key: "result"
             }
         });
@@ -35,7 +37,7 @@ router.get('/', async function (req, res, next) {
             label: `Memory`,
             params: {
                 format: "JSON",
-                url: `http://localhost:3000/api/stats/memory/${server.id}`,
+                url: `http://${ip}:3000/api/stats/memory/${server.id}`,
                 key: "result"
             }
         });
@@ -44,7 +46,7 @@ router.get('/', async function (req, res, next) {
             label: `Disk used`,
             params: {
                 format: "JSON",
-                url: `http://localhost:3000/api/stats/disk/${server.id}`,
+                url: `http://${ip}:3000/api/stats/disk/${server.id}`,
                 key: "result"
             }
         });
@@ -53,7 +55,7 @@ router.get('/', async function (req, res, next) {
             label: `Process Count`,
             params: {
                 format: "JSON",
-                url: `http://localhost:3000/api/stats/process/${server.id}`,
+                url: `http://${ip}:3000/api/stats/process/${server.id}`,
                 key: "result"
             }
         });
@@ -62,7 +64,7 @@ router.get('/', async function (req, res, next) {
             label: `Opened files`,
             params: {
                 format: "JSON",
-                url: `http://localhost:3000/api/stats/openFiles/${server.id}`,
+                url: `http://${ip}:3000/api/stats/openFiles/${server.id}`,
                 key: "result"
             }
         });
