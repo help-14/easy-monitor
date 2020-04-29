@@ -16,5 +16,6 @@
         "os": 2,
         "process": 12,
         "file": 12
-    }
+    },
+    "reportColumn": 6
 }
