@@ -2,13 +2,16 @@
     <div class="container-fluid">
         <div class="row">
             <nav class="footer-nav">
+                <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+            </nav>
+            <div class="ml-auto">
                 <ul>
                     <li><a href="https://github.com/help-14/easy-monitor" target="_blank">Github</a></li>
                     <li><a href="https://github.com/help-14/easy-monitor/wiki" target="_blank">Document</a></li>
                     <li><a href="https://github.com/help-14/easy-monitor/blob/master/LICENSE"
                             target="_blank">Licenses</a></li>
                 </ul>
-            </nav>
+            </div>
             <div class="credits ml-auto">
                 <span class="copyright">
                     ©
@@ -43,7 +46,29 @@
         // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
         demo.initChartsPages();
     });
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+
+    var navOpened = false;
+    function navControl() {
+        if (navOpened) {
+            navOpened = false;
+            closeNav();
+        } else {
+            navOpened = true;
+            openNav();
+        }
+    }
 </script>
+
 </body>
 
 </html>

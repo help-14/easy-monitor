@@ -3339,17 +3339,16 @@ License - nucleoapp.com/license/
 .main-panel {
   position: relative;
   float: right;
-  width: calc(100% - 260px);
+  width: calc(100%);
   background-color: #f4f3ef;
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1); }
   .main-panel > .content {
-    padding: 0 30px 30px;
-    min-height: calc(100vh - px);
-    margin-top: 93px; }
+    padding: 0 0px 0px;
+    margin-top: 0px; }
   .main-panel > .navbar {
     margin-bottom: 0; }
   .main-panel .header {
-    margin-bottom: 50px; }
+    margin-bottom: 0px; }
 
 .perfect-scrollbar-on .sidebar,
 .perfect-scrollbar-on .main-panel {
