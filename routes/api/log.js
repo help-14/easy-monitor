@@ -38,7 +38,7 @@ router.post('/:serverid', async function (req, res, next) {
         UpdateCacheData(server, 'networkOutput', data.network.total.outputMb);
     }
     if (data.disk && data.disk.usedPercentage)
-        UpdateCacheData(server, 'disk', data.disk.usedPercentage);
+        UpdateCacheData(server, 'disk', parseFloat(data.disk.usedPercentage));
     if (data.os && data.os.uptime)
         UpdateCacheData(server, 'uptime', data.os.uptime);
     if (data.process && data.process.total)
