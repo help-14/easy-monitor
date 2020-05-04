@@ -9,7 +9,7 @@ function verifyRequest(req) {
 }
 
 function verifyParam(param) {
-    return /^[a-zA-Z0-9\s\-]+$/.test(keyword)
+    return /^[a-zA-Z0-9\s\-]+$/.test(param)
 }
 
 module.exports = {
