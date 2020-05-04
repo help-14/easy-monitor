@@ -1,6 +1,7 @@
 const config = require('config');
 const Router = require('express-promise-router');
 var { GetCacheData } = require('../utils/data');
+const { verifyRequest, verifyParam } = require('../utils/request');
 
 const websiteName = config.get('name');
 const domain = config.get('domain');
@@ -8,7 +9,15 @@ const domain = config.get('domain');
 const router = new Router();
 
 router.get('/', async function (req, res, next) {
+  let keyword = req.param('filter');
+  if (!verifyParam(keyword)) keyword = null;
+
   let result = await GetCacheData();
+  if (keyword) {
+    keyword = keyword.toLowerCase().trim();
+    result = result.filter(x => x.id.toLowerCase().includes(keyword) || x.name.toLowerCase().includes(keyword));
+  }
+
   res.render('index', {
     title: websiteName,
     website: websiteName,

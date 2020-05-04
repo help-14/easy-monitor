@@ -14,7 +14,6 @@ var serversRouter = require('./routes/servers');
 
 var infoRouter = require('./routes/api/info');
 var logRouter = require('./routes/api/log');
-var monitororRouter = require('./routes/api/monitoror');
 var statsRouter = require('./routes/api/stats');
 
 var app = express();
@@ -38,7 +37,6 @@ app.use('/servers', serversRouter);
 
 app.use('/api/info', infoRouter);
 app.use('/api/log', logRouter);
-app.use('/api/monitoror', monitororRouter);
 app.use('/api/stats', statsRouter);
 
 // catch 404 and forward to error handler
