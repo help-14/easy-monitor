@@ -1,0 +1,81 @@
+<%- include('parts/header'); %>
+
+<div class="content m-0 p-0" style="min-height: 92vh;">
+  <div class="d-inline-flex flex-wrap justify-content-center">
+    <% data.forEach(function(server){ %>
+    <div id="#<%= server.id %>" onclick="location.href='<%= domain %>/servers/<%= server.id %>';"
+      class="card m-2 d-flex align-items-stretch container" style="min-width: 80vw; max-width: 90vw; cursor:pointer;">
+      <div class="row">
+        <div class="col-sm ml-2">
+          <p class="align-middle mb-1 mt-3"><%= server.name %></p>
+          <p class="align-middle mt-0 mb-3"><%= server.id %></p>
+        </div>
+        <div class="col-sm">
+          <p class="align-middle mb-1 mt-3">CPU</p>
+          <p id='#cpu' class="align-middle mt-0 mb-3"><%= server.cpu %></p>
+        </div>
+        <div class="col-sm">
+          <p class="align-middle mb-1 mt-3">Memory</p>
+          <p id='#memory' class="align-middle mt-0 mb-3"><%= server.memory %></p>
+        </div>
+        <div class="col-sm">
+          <p class="align-middle mb-1 mt-3">Disk</p>
+          <p id='#disk' class="align-middle mt-0 mb-3"><%= server.disk %></p>
+        </div>
+        <div class="col-sm">
+          <p class="align-middle mb-1 mt-3">Process</p>
+          <p id='#process' class="align-middle mt-0 mb-3"><%= server.process %></p>
+        </div>
+        <div class="col-sm">
+          <p class="align-middle mb-1 mt-3">Open Files</p>
+          <p id='#files' class="align-middle mt-0 mb-3"><%= server.openFiles %></p>
+        </div>
+        <div class="col-sm">
+          <p class="align-middle mb-1 mt-3">Network</p>
+          <p class="align-middle mt-0 mb-3">
+            <span id='#download'><%= server.networkInput %></span> ⬆️,
+            <span id='#upload'><%= server.networkOutput %></span> ⬇️
+          </p>
+        </div>
+        <div class="col-sm mr-2">
+          <p class="align-middle mb-1 mt-3">Uptime</p>
+          <p id='#uptime' class="align-middle mt-0 mb-3"><%= server.uptime %></p>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+
+  </div>
+</div>
+
+<script>
+  setInterval(function () {
+    $.ajax({
+      "url": "<%= domain %>/servers/json",
+      "success": function (data) {
+        if (Array.isArray(data)) {
+          for (let server of data) {
+            if (!$('#' + server.id)) continue;
+            $('#' + server.id + ' #cpu').html(server.cpu);
+            $('#' + server.id + ' #memory').html(server.memory);
+            $('#' + server.id + ' #disk').html(server.disk);
+            $('#' + server.id + ' #process').html(server.process);
+            $('#' + server.id + ' #files').html(server.openFiles);
+            $('#' + server.id + ' #upload').html(server.networkOutput);
+            $('#' + server.id + ' #download').html(server.networkInput);
+            $('#' + server.id + ' #uptime').html(server.uptime);
+          }
+          //console.info('Info updated: ', Date.now());
+        } else {
+          console.warn('Invalid data.');
+          console.warn(data);
+        }
+      },
+      "error": function (error) {
+        console.error(error);
+      }
+    })
+  }, 30000);
+</script>
+
+<%- include('parts/footer'); %>

@@ -1,4 +1,5 @@
 const db = require('./db');
+const prettyMilliseconds = require('pretty-ms');
 
 var cacheData = null;
 
@@ -6,6 +7,34 @@ async function GetCacheData() {
     if (cacheData) return cacheData;
     await SetCacheData();
     return cacheData || [];
+}
+
+async function GetCacheFormatData() {
+    let data = [];
+    let servers = await GetCacheData();
+    if (servers) {
+        servers.forEach(server => {
+            let clone = Object.assign({}, server);
+            clone.cpu = formatPercentage(clone.cpu);
+            clone.memory = formatPercentage(clone.memory);
+            clone.disk = formatPercentage(clone.disk);
+            clone.uptime = formatMs(clone.uptime, { compact: true });
+            data.push(clone);
+        });
+    }
+    return data;
+}
+
+function formatMs(miliseconds) {
+    if (miliseconds)
+        return prettyMilliseconds(miliseconds);
+    return milisecondsl;
+}
+
+function formatPercentage(amount) {
+    if (amount)
+        return amount.toFixed(2) + ' %';
+    return amount;
 }
 
 async function SetCacheData() {
@@ -50,6 +79,20 @@ function UpdateCacheData(server, property, value) {
     }
 }
 
+function GetServerCache(server) {
+    if (!cacheData) return;
+    for (let i = 0; i < cacheData.length; i++) {
+        if (cacheData[i].id === server) {
+            return cacheData[i];
+        }
+    }
+    return null;
+}
+
+function ClearCache() {
+    cacheData = null;
+}
+
 function FormatTime(milisecond) {
     let formater = new Intl.RelativeTimeFormat('vi', { style: 'long' });
     let seconds = -timestamp / 1000;
@@ -77,7 +120,10 @@ function FormatTime(milisecond) {
 
 module.exports = {
     GetCacheData,
+    GetCacheFormatData,
     SetCacheData,
     UpdateCacheData,
-    FormatTime
+    FormatTime,
+    GetServerCache,
+    ClearCache
 }

@@ -1,13 +1,13 @@
 const Router = require('express-promise-router');
 const db = require('../../utils/db');
-const { verifyRequest } = require('../../utils/request');
+const { verifyRequest, verifyParam } = require('../../utils/request');
 
 const router = new Router();
 
 router.post('/:serverid', async function (req, res, next) {
     let server = req.params.serverid;
 
-    if (verifyRequest(req) === false) {
+    if (verifyRequest(req) === false || verifyParam(server) === false) {
         res.json({ result: false, msg: 'request invalid' });
         return;
     }

@@ -1,5 +1,6 @@
 const Router = require('express-promise-router');
 const { GetCacheData } = require('../../utils/data');
+const { verifyParam } = require('../../utils/request');
 const router = new Router();
 
 router.get('/cpu/:serverid', async function (req, res, next) {
@@ -27,6 +28,11 @@ router.get('/openFiles/:serverid', async function (req, res, next) {
 });
 
 async function ProcessRequest(res, server, property) {
+    if (verifyParam(server) === false) {
+        res.json({ result: 'invalid' });
+        return;
+    }
+
     let percentMark = ['cpu', 'memory', 'disk'];
     let cacheData = await GetCacheData();
     for (let info of cacheData) {

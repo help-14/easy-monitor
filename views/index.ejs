@@ -1,183 +1,94 @@
 <%- include('parts/header'); %>
 
 <div class="content m-0 p-0">
-
-  <iframe src="<%- monitoror %>?theme=dark&configUrl=<%- domain %>/api/monitoror" class="m-0 p-0 border-0 w-100"
-    style="min-height: 94vh;">
-  </iframe>
-
-  <!-- <div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-6">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-laptop text-success"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-category">Server online</p>
-                <p class="card-title">0<p>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer "> </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-atom text-success"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-category">Service Online</p>
-                <p class="card-title">150GB<p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer "> </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-glasses-2 text-warning"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-category">Warning</p>
-                <p class="card-title">+45K<p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer "> </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-support-17 text-danger"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-category">Errors</p>
-                <p class="card-title">23<p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer "> </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card card-chart">
-        <div class="card-header">
-          <h5 class="card-title">CPU Usage</h5>
-          <p class="card-category">Top 5 heavy load server</p>
-        </div>
-        <div class="card-body">
-          <canvas id="cpuChart" width="400" height="100"></canvas>
-        </div>
-        <div class="card-footer">
-          <div class="chart-legend">
-            <i class="fa fa-circle text-info"></i> Tesla Model S
-            <i class="fa fa-circle text-warning"></i> BMW 5 Series
-          </div>
-          <hr />
-          <div class="card-stats">
-            <i class="fa fa-history"></i> Updated 3 minutes ago
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="card card-chart">
-        <div class="card-header">
-          <h5 class="card-title">Memory Usage</h5>
-          <p class="card-category">Top 5 memory hungry server</p>
-        </div>
-        <div class="card-body">
-          <canvas id="memoryChart" width="400" height="100"></canvas>
-        </div>
-        <div class="card-footer">
-          <div class="chart-legend">
-            <i class="fa fa-circle text-info"></i> Tesla Model S
-            <i class="fa fa-circle text-warning"></i> BMW 5 Series
-          </div>
-          <hr />
-          <div class="card-stats">
-            <i class="fa fa-history"></i> Updated 3 minutes ago
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card ">
-        <div class="card-header ">
-          <h5 class="card-title">Test</h5>
-          <p class="card-category">24 Hours performance</p>
-        </div>
-        <div class="card-body ">
-          <canvas id=chartHours width="400" height="100"></canvas>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            <i class="fa fa-history"></i> Updated 3 minutes ago
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card ">
-        <div class="card-header ">
-          <h5 class="card-title">Email Statistics</h5>
-          <p class="card-category">Last Campaign Performance</p>
-        </div>
-        <div class="card-body ">
-          <canvas id="chartEmail"></canvas>
-        </div>
-        <div class="card-footer ">
-          <div class="legend">
-            <i class="fa fa-circle text-primary"></i> Opened
-            <i class="fa fa-circle text-warning"></i> Read
-            <i class="fa fa-circle text-danger"></i> Deleted
-            <i class="fa fa-circle text-gray"></i> Unopened
-          </div>
-          <hr>
-          <div class="stats">
-            <i class="fa fa-calendar"></i> Number of emails sent
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
+    <table id='#server-table' class="table table-dark m-o p-0 b-0"
+        style="font-size:200%; min-height: 90vh; border-style: dotted;">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col" class="text-light">#</th>
+                <th scope="col" class="text-light">CPU</th>
+                <th scope="col" class="text-light">Memory</th>
+                <th scope="col" class="text-light">Process</th>
+                <th scope="col" class="text-light">Opened files</th>
+                <th scope="col" class="text-light">Disk</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(function(server){ %>
+            <tr id='<%= server.id %>'>
+                <th scope="row"></th>
+                <td id="name" class="font-weight-bold"><%= server.name %></th>
+                <td id="cpu" class="font-weight-bold"></td>
+                <td id="memory" class="font-weight-bold"></td>
+                <td id="process" class="font-weight-bold"></td>
+                <td id="files" class="font-weight-bold"></td>
+                <td id="disk" class="font-weight-bold"></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
 </div>
+
+<script>
+    function formatPercentage(amount) {
+        if (amount)
+            return (amount.toFixed(2) + ' %').replace('.00', '');
+        return amount;
+    }
+
+    const okayColor = '#1abc9c';
+    const warnColor = '#f1c40f';
+    const errorColor = '#e74c3c';
+
+    function update() {
+        $.ajax({
+            "url": "<%= domain %>/json",
+            "success": function (data) {
+                if (Array.isArray(data)) {
+                    for (let server of data) {
+                        if (!$('#' + server.id)) continue;
+                        var state = 0;
+
+                        $('#' + server.id + ' #cpu').html(formatPercentage(server.cpu));
+                        if (server.cpu >= 90 && state === 0) state = 1;
+                        if (server.cpu == 100 && state !== 2) state = 2;
+
+                        $('#' + server.id + ' #memory').html(formatPercentage(server.memory));
+                        if (server.memory >= 80 && state === 0) state = 1;
+                        if (server.memory >= 95 && state !== 2) state = 2;
+
+                        $('#' + server.id + ' #process').html(server.process);
+
+                        $('#' + server.id + ' #files').html(server.openFiles);
+                        if (server.openFiles >= 60000 && state === 0) state = 1;
+                        if (server.openFiles >= 65000 && state !== 2) state = 2;
+
+                        $('#' + server.id + ' #disk').html(formatPercentage(server.disk));
+                        if (server.disk >= 90 && state === 0) state = 1;
+                        if (server.disk >= 99 && state !== 2) state = 2;
+
+                        if (state === 0)
+                            $('#' + server.id).css("color", okayColor);
+                        else if (state === 1)
+                            $('#' + server.id).css("color", warnColor);
+                        else
+                            $('#' + server.id).css("color", errorColor);
+                    }
+                    console.info('Info updated: ', Date.now());
+                } else {
+                    console.warn('Invalid data.');
+                    console.warn(data);
+                }
+            },
+            "error": function (error) {
+                console.error(error);
+            }
+        })
+    }
+
+    $(document).ready(update);
+    setInterval(update, 10000);
+</script>
 
 <%- include('parts/footer'); %>

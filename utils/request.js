@@ -8,6 +8,11 @@ function verifyRequest(req) {
     return true;
 }
 
+function verifyParam(param) {
+    return /^[a-zA-Z0-9\s\-]+$/.test(keyword)
+}
+
 module.exports = {
     verifyRequest,
+    verifyParam
 };

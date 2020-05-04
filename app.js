@@ -10,6 +10,8 @@ const serverName = config.get('name');
 
 var { createNotFoundError, handleError } = require('./routes/error');
 var indexRouter = require('./routes/index');
+var serversRouter = require('./routes/servers');
+
 var infoRouter = require('./routes/api/info');
 var logRouter = require('./routes/api/log');
 var monitororRouter = require('./routes/api/monitoror');
@@ -32,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/servers', serversRouter);
 
 app.use('/api/info', infoRouter);
 app.use('/api/log', logRouter);
