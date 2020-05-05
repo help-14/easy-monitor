@@ -54,7 +54,7 @@
 
                         $('#' + server.id + ' #cpu').html(formatPercentage(server.cpu));
                         if (server.cpu > 85 && state === 0) state = 1;
-                        if (server.cpu == 95 && state !== 2) state = 2;
+                        if (server.cpu >= 95 && state !== 2) state = 2;
 
                         $('#' + server.id + ' #memory').html(formatPercentage(server.memory));
                         if (server.memory > 85 && state === 0) state = 1;
