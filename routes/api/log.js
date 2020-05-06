@@ -90,9 +90,9 @@ router.post("/:serverid", async function (req, res, next) {
 		UpdateCacheData(server, "openFiles", data.file.open);
 
 		let identifier = `${server}-openFiles`;
-		if (data.file.open >= states.disk.danger)
+		if (data.file.open >= states.openFiles.danger)
 			notifier.SendDanger(server, `Total opened files is reaching limit, current is: ${data.file.open}`, identifier);
-		else if (data.file.open >= states.disk.warn)
+		else if (data.file.open >= states.openFiles.warn)
 			notifier.SendWarning(server, `Total opened files is: ${data.file.open}`, identifier);
 		else
 			notifier.ClearIdentifier(identifier);
