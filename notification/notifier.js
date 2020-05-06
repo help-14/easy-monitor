@@ -37,7 +37,7 @@ function SendInfo(title, message, identifier = null) {
 }
 
 function ClearIdentifier(identifier) {
-    identifiers = identifiers.filter(id => id !== identifier);
+    identifiers = identifiers.filter(id => id.includes(identifier));
 }
 
 module.exports = {

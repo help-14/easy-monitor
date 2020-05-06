@@ -47,9 +47,9 @@ router.post("/:serverid", async function (req, res, next) {
 			let identifier = `${server}-cpu`;
 			let cpuAvg = data.cpu.loadavg[1];
 			if (cpuAvg >= states.cpu.danger)
-				notifier.SendDanger(server, `Average CPU load in the last 5 minutes is: ${cpuAvg.toFixed(1)} %, current is: ${data.cpu.usage.toFixed(1)} %`, identifier);
+				notifier.SendDanger(server, `Average CPU load in the last 5 minutes is: ${cpuAvg.toFixed(1)}%, current is: ${data.cpu.usage.toFixed(1)} %`, `${identifier}-danger`);
 			else if (cpuAvg >= states.cpu.warn)
-				notifier.SendWarning(server, `Average CPU load in the last 5 minutes is ${cpuAvg.toFixed(1)}`, identifier);
+				notifier.SendWarning(server, `Average CPU load in the last 5 minutes is ${cpuAvg.toFixed(1)}`, `${identifier}-warn`);
 			else
 				notifier.ClearIdentifier(identifier);
 		}
@@ -60,9 +60,9 @@ router.post("/:serverid", async function (req, res, next) {
 
 		let identifier = `${server}-memory`;
 		if (memoryAvg >= states.memory.danger)
-			notifier.SendDanger(server, `Current memory usages is: ${memoryAvg.toFixed(1)} %`, identifier);
+			notifier.SendDanger(server, `Current memory usages is: ${memoryAvg.toFixed(1)}%`, `${identifier}-danger`);
 		else if (memoryAvg >= states.memory.warn)
-			notifier.SendWarning(server, `Current memory usages is: ${memoryAvg.toFixed(1)} %`, identifier);
+			notifier.SendWarning(server, `Current memory usages is: ${memoryAvg.toFixed(1)}%`, `${identifier}-warn`);
 		else
 			notifier.ClearIdentifier(identifier);
 	}
@@ -76,9 +76,9 @@ router.post("/:serverid", async function (req, res, next) {
 
 		let identifier = `${server}-disk`;
 		if (diskAvg >= states.disk.danger)
-			notifier.SendDanger(server, `${diskAvg.toFixed(1)} % disk space are used`, identifier);
+			notifier.SendDanger(server, `${diskAvg.toFixed(1)}% disk space are used`, `${identifier}-danger`);
 		else if (diskAvg >= states.disk.warn)
-			notifier.SendWarning(server, `${diskAvg.toFixed(1)} % disk space are used`, identifier);
+			notifier.SendWarning(server, `${diskAvg.toFixed(1)}% disk space are used`, `${identifier}-warn`);
 		else
 			notifier.ClearIdentifier(identifier);
 	}
@@ -91,9 +91,9 @@ router.post("/:serverid", async function (req, res, next) {
 
 		let identifier = `${server}-openFiles`;
 		if (data.file.open >= states.openFiles.danger)
-			notifier.SendDanger(server, `Total opened files is reaching limit, current is: ${data.file.open}`, identifier);
+			notifier.SendDanger(server, `Total opened files is reaching limit, current is: ${data.file.open}`, `${identifier}-danger`);
 		else if (data.file.open >= states.openFiles.warn)
-			notifier.SendWarning(server, `Total opened files is: ${data.file.open}`, identifier);
+			notifier.SendWarning(server, `Total opened files is: ${data.file.open}`, `${identifier}-warn`);
 		else
 			notifier.ClearIdentifier(identifier);
 	}
