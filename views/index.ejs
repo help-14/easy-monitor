@@ -74,6 +74,8 @@
                         if (Date.now() - server.time > 120000) { // 2 minutes
                             state = 3;
                             $('#' + server.id + ' #name').html('[Offline] ' + server.name);
+                        } else {
+                            $('#' + server.id + ' #name').html(server.name);
                         }
 
                         if (state === 0)
