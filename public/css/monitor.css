@@ -63,3 +63,55 @@
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
 }
+
+
+#server-table tbody tr > th {
+  position: relative;
+  height: 8px;
+  display: block;
+}
+
+#server-table tbody tr > th:before {
+  content: "•";
+  color: #FFFFFF;
+  font-size: 48px;
+  position: absolute;
+  top: -5px;
+  left: 24px;
+  opacity: 1;
+}
+
+#server-table tbody tr.state-0 > th:before { /* running */
+  color: #1abc9c;
+  animation-name: flash;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+
+#server-table tbody tr.state-1 > th:before { /* warn */
+  color: #f1c40f;
+  animation-name: flash;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+
+#server-table tbody tr.state-2 > th:before { /* danger */
+  color: #e74c3c;
+  animation-name: flash;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+}
+
+
+#server-table tbody tr.state-3 > th:before { /* offline */
+  color: #7f8c8d;
+  opacity: 0;
+}
+
+@keyframes flash {
+  0%   {opacity: 0; }
+  50%  {opacity: 1;}
+  100% {opacity: 0;}
+}
