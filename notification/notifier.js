@@ -16,7 +16,11 @@ function SendNotify(title, message, identifier = null) {
     }
 
     for (let plugin of plugins) {
-        plugin.sendNotify(title, message);
+        try {
+            plugin.sendNotify(title, message);
+        } catch (err) {
+            console.warn(err.stack);
+        }
     }
 }
 

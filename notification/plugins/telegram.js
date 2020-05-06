@@ -19,6 +19,7 @@ function isEnable() {
 
 function sendNotify(title, content) {
     let text = `${title}</b>\n<pre><code>${content}</code></pre>\n`;
+    console.log('telegrram text: ', text);
     bot.sendMessage(channel, text, {
         parse_mode: 'HTML',
     });
