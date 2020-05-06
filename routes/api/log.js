@@ -45,6 +45,8 @@ router.post('/:serverid', async function (req, res, next) {
         UpdateCacheData(server, 'process', data.process.total);
     if (data.file && data.file.open)
         UpdateCacheData(server, 'openFiles', data.file.open);
+    if (data.time)
+        UpdateCacheData(server, 'time', data.time);
 
     try {
         await db.query(`INSERT INTO logs(
