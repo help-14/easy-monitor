@@ -50,6 +50,7 @@ async function SetCacheData() {
         let infos = await db.query(`SELECT * FROM logs WHERE server='${row.identifier}' ORDER BY time DESC LIMIT 1`);
         let info = (infos && infos.rows.length > 0) ? infos.rows[0] : null;
 
+        server.time = info.time;
         server.cpu = info ? info.cpu.usage : 0;
         server.memory = info ? (info.memory.usedMemMb / info.memory.totalMemMb) * 100 : 0;
         server.networkInput = (info && info.network && info.network.total) ? info.network.total.inputMb : 0;

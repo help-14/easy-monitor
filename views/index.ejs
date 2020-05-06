@@ -42,6 +42,7 @@
     const okayColor = '#1abc9c';
     const warnColor = '#f1c40f';
     const errorColor = '#e74c3c';
+    const offlineColor = '#7f8c8d';
 
     function update() {
         $.ajax({
@@ -70,12 +71,17 @@
                         if (server.disk > 85 && state === 0) state = 1;
                         if (server.disk >= 95 && state !== 2) state = 2;
 
+                        if (Date.now() - server.time > 120000) // 2 minutes
+                            state = 3;
+
                         if (state === 0)
                             $('#' + server.id).css("color", okayColor);
                         else if (state === 1)
                             $('#' + server.id).css("color", warnColor);
-                        else
+                        else if (state === 2)
                             $('#' + server.id).css("color", errorColor);
+                        else //if (state === 3)
+                            $('#' + server.id).css("color", offlineColor);
                     }
                     console.info('Info updated: ', Date.now());
                 } else {
