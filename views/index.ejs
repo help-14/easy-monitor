@@ -54,22 +54,22 @@
                         var state = 0;
 
                         $('#' + server.id + ' #cpu').html(formatPercentage(server.cpu));
-                        if (server.cpu > 85 && state === 0) state = 1;
-                        if (server.cpu >= 95 && state !== 2) state = 2;
+                        if (server.cpu > <%= states.cpu.warn %> && state === 0) state = 1;
+                        if (server.cpu >= <%= states.cpu.danger %> && state !== 2) state = 2;
 
                         $('#' + server.id + ' #memory').html(formatPercentage(server.memory));
-                        if (server.memory > 85 && state === 0) state = 1;
-                        if (server.memory >= 95 && state !== 2) state = 2;
+                        if (server.memory > <%= states.memory.warn %> && state === 0) state = 1;
+                        if (server.memory >= <%= states.memory.danger %> && state !== 2) state = 2;
 
                         $('#' + server.id + ' #process').html(server.process);
 
                         $('#' + server.id + ' #files').html(server.openFiles);
-                        if (server.openFiles > 60000 && state === 0) state = 1;
-                        if (server.openFiles >= 64000 && state !== 2) state = 2;
+                        if (server.openFiles > <%= states.openFiles.warn %> && state === 0) state = 1;
+                        if (server.openFiles >= <%= states.openFiles.danger %> && state !== 2) state = 2;
 
                         $('#' + server.id + ' #disk').html(formatPercentage(server.disk));
-                        if (server.disk > 85 && state === 0) state = 1;
-                        if (server.disk >= 95 && state !== 2) state = 2;
+                        if (server.disk > <%= states.disk.warn %> && state === 0) state = 1;
+                        if (server.disk >= <%= states.disk.danger %> && state !== 2) state = 2;
 
                         if (Date.now() - server.time > 120000) { // 2 minutes
                             state = 3;
@@ -94,8 +94,8 @@
                 }
             },
             "error": function (error) {
-                console.error(error);
-            }
+            console.error(error);
+        }
         })
     }
 

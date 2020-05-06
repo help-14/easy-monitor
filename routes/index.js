@@ -5,6 +5,7 @@ const { verifyRequest, verifyParam } = require('../utils/request');
 
 const websiteName = config.get('name');
 const domain = config.get('domain');
+const states = config.get('states');
 
 const router = new Router();
 
@@ -22,6 +23,7 @@ router.get('/', async function (req, res, next) {
     title: websiteName,
     website: websiteName,
     domain: domain,
+    states: states,
     data: result || []
   });
 });

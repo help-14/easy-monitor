@@ -19,5 +19,29 @@
         "process": 12,
         "file": 12
     },
-    "reportColumn": 6
+    "notification": {
+        "enable": true,
+        "telegram": {
+            "apiKey": "",
+            "channel": -1000
+        }
+    },
+    "states": {
+        "cpu": {
+            "warn": 85,
+            "danger": 95
+        },
+        "memory": {
+            "warn": 85,
+            "danger": 95
+        },
+        "openFiles": {
+            "warn": 60000,
+            "danger": 64000
+        },
+        "disk": {
+            "warn": 85,
+            "danger": 95
+        }
+    }
 }
