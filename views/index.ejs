@@ -71,8 +71,10 @@
                         if (server.disk > 85 && state === 0) state = 1;
                         if (server.disk >= 95 && state !== 2) state = 2;
 
-                        if (Date.now() - server.time > 120000) // 2 minutes
+                        if (Date.now() - server.time > 120000) { // 2 minutes
                             state = 3;
+                            $('#' + server.id + ' #name').html('[Offline] ' + server.name);
+                        }
 
                         if (state === 0)
                             $('#' + server.id).css("color", okayColor);
