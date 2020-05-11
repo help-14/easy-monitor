@@ -10,7 +10,7 @@ const states = config.get('states');
 const router = new Router();
 
 router.get('/', async function (req, res, next) {
-  let keyword = req.params.filter;
+  let keyword = req.param('filter');
   if (!verifyParam(keyword)) keyword = null;
 
   let result = await GetCacheData();
