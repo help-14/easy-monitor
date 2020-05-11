@@ -102,7 +102,7 @@ router.post("/:serverid", async function (req, res, next) {
 	// Insert to Database
 	try {
 		await db.query(`INSERT INTO logs(cpu, memory, network, disk, os, process, file, time, server) 
-        				VALUES ($1::text, $2::text, $3::text, $4::text, $5::text, $6::text, $7::text, $8, $9::text)`,
+        				VALUES ($1::json, $2::json, $3::json, $4::json, $5::json, $6::json, $7::json, $8, $9::text)`,
 			[
 				data.cpu ? JSON.stringify(data.cpu) : "{}",
 				data.memory ? JSON.stringify(data.memory) : "{}",
